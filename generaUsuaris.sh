@@ -14,6 +14,13 @@ fi
 
 echo -n "Valor inicial Uid Number?"
 read vinic
+vinic=$((vinic-1))
+
+if [[ $vinic < 5000 ]] 
+then
+    echo "El número que has introduït es incorrecte"
+    exit 0
+fi
 
 if [[ -e nomUsuaris.ldif ]]
 then
@@ -46,5 +53,5 @@ do
 done
 ldapadd -h localhost -x -D "cn=admin,dc=fjeclot,dc=net" -W -f nousUsuaris.ldif
 
-echo "Usuaris creats correctament"
+echo "S'ha creat satisfactoriament"
 exit 0
